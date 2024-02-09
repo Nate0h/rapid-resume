@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PersonalDetails from "./components/personalDetails.jsx";
 import Education from "./components/education.jsx";
+import Experience from "./components/experience.jsx";
 import Resume from "./components/resume.jsx";
 import "./App.css";
 
@@ -20,6 +21,7 @@ function App() {
         setPersonalDetails={setPersonalDetails}
       />
       <Education />
+      <Experience />
       <Resume personalDetails={personalDetails} />
     </>
   );
