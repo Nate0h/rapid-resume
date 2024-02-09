@@ -2,6 +2,7 @@ import { useState } from "react";
 import PersonalDetails from "./components/personalDetails.jsx";
 import Education from "./components/education.jsx";
 import Experience from "./components/experience.jsx";
+import Skills from "./components/skills.jsx";
 import Resume from "./components/resume.jsx";
 import "./App.css";
 
@@ -16,13 +17,19 @@ function App() {
 
   return (
     <>
-      <PersonalDetails
-        personalDetails={personalDetails}
-        setPersonalDetails={setPersonalDetails}
-      />
-      <Education />
-      <Experience />
-      <Resume personalDetails={personalDetails} />
+      <div>
+        <PersonalDetails
+          personalDetails={personalDetails}
+          setPersonalDetails={setPersonalDetails}
+        />
+        <Education />
+        <Experience />
+        <Skills />
+      </div>
+
+      <div>
+        <Resume personalDetails={personalDetails} />
+      </div>
     </>
   );
 }
