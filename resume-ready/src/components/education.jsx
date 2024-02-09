@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
 
 function Education() {
   const [showForm, setShowForm] = useState(false);
@@ -102,8 +102,13 @@ function Education() {
     console.log("delete joke", id);
   };
 
+  const handleCancelClick = () => {
+    setEditId(-1);
+  };
+
   return (
     <div>
+      <h2>Education</h2>
       <button onClick={() => setShowForm(true)}> Add Education </button>
       {showForm && (
         <EducationForm
@@ -120,14 +125,15 @@ function Education() {
             {education.id === editId ? (
               <form onSubmit={handleEditFormSave}>
                 <EditEntry
-                  key={education.id}
+                  //key={education.id}
+                  cancelEdit={handleCancelClick}
                   editEducation={editEducation}
                   editFormChange={handleEditFormChange}
                 />
               </form>
             ) : (
               <EducationEntry
-                key={education.id}
+                //key={education.id}
                 education={education}
                 handleEditClick={handleEditClick}
                 handleDeleteClick={handleDeleteClick}
@@ -195,7 +201,7 @@ function EducationEntry({ education, handleEditClick, handleDeleteClick }) {
   );
 }
 
-function EditEntry({ editEducation, editFormChange }) {
+function EditEntry({ cancelEdit, editEducation, editFormChange }) {
   return (
     <>
       <div>
@@ -237,6 +243,9 @@ function EditEntry({ editEducation, editFormChange }) {
           value={editEducation.end}
           onChange={editFormChange}
         />
+      </div>
+      <div>
+        <button onClick={cancelEdit}>Cancel</button>
       </div>
       <div>
         <button type="submit">Save</button>
