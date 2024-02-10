@@ -1,0 +1,25 @@
+#root {
+  margin: 0 auto;
+  padding: 1.5rem;
+  --navy: rgb(18, 57, 146);
+}
+body {
+  min-height: 100vh;
+}
+header {
+  height: 10%;
+  color: red;
+  border-bottom: 2px black solid;
+}
+.mainContent {
+  display: flex;
+  flex: 1;
+}
+
+.editResume {
+  flex-basis: 35%;
+}
+
+.Resume {
+  flex: 1;
+}
