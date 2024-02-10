@@ -46,3 +46,12 @@ span {
   font-style: italic;
   word-break: break-all;
 }
+
+.educationContainer {
+  display: flex;
+  margin-left: 1.8em;
+  max-width: 60%;
+  justify-items: center;
+  justify-content: space-between;
+  line-height: 1.5em;
+}

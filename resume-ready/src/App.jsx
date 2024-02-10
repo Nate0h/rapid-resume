@@ -15,6 +15,8 @@ function App() {
     aboutMe: "",
   });
 
+  const [educationHistory, setEducationHistory] = useState([]);
+
   return (
     <div className="app">
       <header>Rapid Resume Plus</header>
@@ -24,13 +26,19 @@ function App() {
             personalDetails={personalDetails}
             setPersonalDetails={setPersonalDetails}
           />
-          <Education />
+          <Education
+            educationHistory={educationHistory}
+            setEducationHistory={setEducationHistory}
+          />
           <Experience />
           <Skills />
         </aside>
 
         <div className="Resume">
-          <Resume personalDetails={personalDetails} />
+          <Resume
+            personalDetails={personalDetails}
+            educationHistory={educationHistory}
+          />
         </div>
       </main>
     </div>

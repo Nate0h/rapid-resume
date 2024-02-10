@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-function Education() {
+function Education({ educationHistory, setEducationHistory }) {
   const [showForm, setShowForm] = useState(false);
   const [id, setId] = useState(0);
   const [editId, setEditId] = useState(-1);
-  const [educationHistory, setEducationHistory] = useState([]);
+  // const [educationHistory, setEducationHistory] = useState([]);
 
   const [education, setAddEducationData] = useState({
     school: "",
@@ -98,8 +98,6 @@ function Education() {
     setEducationHistory(
       educationHistory.filter((education) => education.id !== id)
     );
-
-    console.log("delete joke", id);
   };
 
   const handleCancelClick = () => {
