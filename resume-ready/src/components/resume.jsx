@@ -52,7 +52,7 @@ function DisplayEducation({ education }) {
           <div>{education.location}</div>
         </div>
 
-        <div>
+        <div className="educationContent">
           <div>
             <b>{education.school}</b>
           </div>
