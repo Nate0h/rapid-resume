@@ -5,6 +5,9 @@
   background-color: white;
   color: black;
   min-height: 100vh;
+  box-shadow: rgba(50, 50, 93, 0.1) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.25) 0px 8px 16px -8px;
+  position: sticky;
 }
 
 .header {
@@ -47,13 +50,20 @@ span {
   word-break: break-all;
 }
 
-.educationContainer {
+.educationContainer,
+.experienceContainer {
   display: flex;
   text-align: left;
   padding-left: 15px;
   margin-left: 1.5em;
   margin-top: 0.5em;
-  max-width: 60%;
-  justify-content: space-between;
+  min-width: 250px;
+  gap: 30px;
+  margin-bottom: 24px;
   line-height: 1.5em;
+}
+
+.experienceContainer {
+  max-width: 600px;
+  word-break: break-all;
 }

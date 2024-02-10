@@ -1,10 +1,9 @@
 import { useState } from "react";
 
-function Experience() {
+function Experience({ experienceHistory, setExperienceHistory }) {
   const [showForm, setShowForm] = useState(false);
   const [id, setId] = useState(0);
   const [editId, setEditId] = useState(-1);
-  const [experienceHistory, setExperienceHistory] = useState([]);
 
   const [experience, setAddExperienceData] = useState({
     company: "",

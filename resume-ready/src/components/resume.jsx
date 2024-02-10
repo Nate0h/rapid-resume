@@ -4,7 +4,7 @@ import email from "../assets/email.png";
 import phone from "../assets/phone.png";
 import address from "../assets/address.png";
 
-function Resume({ personalDetails, educationHistory }) {
+function Resume({ personalDetails, educationHistory, experienceHistory }) {
   return (
     <div className="displayResume">
       <div className="header">
@@ -36,6 +36,13 @@ function Resume({ personalDetails, educationHistory }) {
         );
       })}
       <h2 className="sectionHeader">Experience</h2>
+      {experienceHistory.map((experience) => {
+        return (
+          <div key={experience.id}>
+            <DisplayExperience experience={experience} />
+          </div>
+        );
+      })}
       <h2 className="sectionHeader">Skills and Technologies</h2>
     </div>
   );
@@ -52,13 +59,38 @@ function DisplayEducation({ education }) {
           <div>{education.location}</div>
         </div>
 
-        <div className="educationContent">
+        <div>
           <div>
             <b>{education.school}</b>
           </div>
           <div>
             <i>{education.degree}</i>
           </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+function DisplayExperience({ experience }) {
+  return (
+    <>
+      <div className="experienceContainer">
+        <div>
+          <div>
+            {experience.start} - {experience.end}
+          </div>
+          <div>{experience.location}</div>
+        </div>
+
+        <div className="experienceContent">
+          <div>
+            <b>{experience.company}</b>
+          </div>
+          <div>
+            <i>{experience.position}</i>
+          </div>
+          <div>{experience.description}</div>
         </div>
       </div>
     </>
