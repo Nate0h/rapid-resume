@@ -1,10 +1,9 @@
 import { useState } from "react";
 
-function Skills() {
+function Skills({ skillsList, setSkillList }) {
   const [showForm, setShowForm] = useState(false);
   const [id, setId] = useState(0);
   const [editId, setEditId] = useState(-1);
-  const [skillsList, setSkillList] = useState([]);
 
   const [skill, setAddSkill] = useState({
     skill: "",

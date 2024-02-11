@@ -4,7 +4,12 @@ import email from "../assets/email.png";
 import phone from "../assets/phone.png";
 import address from "../assets/address.png";
 
-function Resume({ personalDetails, educationHistory, experienceHistory }) {
+function Resume({
+  personalDetails,
+  educationHistory,
+  experienceHistory,
+  skillsList,
+}) {
   return (
     <div className="displayResume">
       <div className="header">
@@ -44,6 +49,15 @@ function Resume({ personalDetails, educationHistory, experienceHistory }) {
         );
       })}
       <h2 className="sectionHeader">Skills and Technologies</h2>
+      <div className="skillSection">
+        {skillsList.map((skill) => {
+          return (
+            <div className="skill" key={skill.id}>
+              {skill.skill}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
