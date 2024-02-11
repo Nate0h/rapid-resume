@@ -81,7 +81,7 @@ function Skills({ skillsList, setSkillList }) {
   return (
     <div>
       <h2>Skills and Technologies</h2>
-      <button onClick={() => setShowForm(true)}> Add Skill </button>
+      <button onClick={() => setShowForm(!showForm)}> Add Skill </button>
       {showForm && (
         <SkillForm
           show={showForm}
@@ -119,14 +119,19 @@ function Skills({ skillsList, setSkillList }) {
 function SkillForm({ show, setShow, skill, submitSkill }) {
   return (
     <div>
-      <h2>Skill</h2>
-
       <form onSubmit={submitSkill}>
         <label htmlFor="skill">Skill</label>
-        <input onChange={skill} type="text" id="skill" />
+        <input
+          onChange={skill}
+          type="text"
+          id="skill"
+          placeholder="e.g ReactJS"
+        />
 
-        <button onClick={() => setShow(!show)}> Remove </button>
-        <button type="submit">Submit Skill</button>
+        <div>
+          <button onClick={() => setShow(!show)}> Cancel </button>
+          <button type="submit">Submit</button>
+        </div>
       </form>
     </div>
   );
@@ -145,8 +150,7 @@ function SkillEntry({ skill, handleEditClick, handleDeleteClick }) {
           {" "}
           Edit{" "}
         </button>
-      </div>
-      <div>
+
         <button type="button" onClick={() => handleDeleteClick(skill.id)}>
           {" "}
           Delete{" "}
@@ -170,8 +174,7 @@ function EditEntry({ cancelEdit, editSkill, editFormChange }) {
 
       <div>
         <button onClick={cancelEdit}>Cancel</button>
-      </div>
-      <div>
+
         <button type="submit">Save</button>
       </div>
     </>

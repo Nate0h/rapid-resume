@@ -101,8 +101,6 @@ function Experience({ experienceHistory, setExperienceHistory }) {
     setExperienceHistory(
       experienceHistory.filter((experience) => experience.id !== id)
     );
-
-    console.log("delete joke", id);
   };
 
   const handleCancelClick = () => {
@@ -112,7 +110,7 @@ function Experience({ experienceHistory, setExperienceHistory }) {
   return (
     <div>
       <h2>Experience</h2>
-      <button onClick={() => setShowForm(true)}> Add Experience </button>
+      <button onClick={() => setShowForm(!showForm)}> Add Experience </button>
       {showForm && (
         <ExperienceForm
           show={showForm}
@@ -150,29 +148,61 @@ function Experience({ experienceHistory, setExperienceHistory }) {
 function ExperienceForm({ show, setShow, experience, submitExperience }) {
   return (
     <div>
-      <h2>Experience</h2>
-
       <form onSubmit={submitExperience}>
         <label htmlFor="company">Company</label>
-        <input onChange={experience} type="text" id="company" />
+        <input
+          onChange={experience}
+          type="text"
+          id="company"
+          placeholder="e.g. Rapid Resume Co."
+          required
+        />
 
         <label htmlFor="position">Position Title</label>
-        <input onChange={experience} type="text" id="position" />
+        <input
+          onChange={experience}
+          type="text"
+          id="position"
+          placeholder="e.g. Global Director"
+          required
+        />
 
         <label htmlFor="start">Start Date</label>
-        <input onChange={experience} type="text" id="start" />
+        <input
+          onChange={experience}
+          type="text"
+          id="start"
+          placeholder="MM/YYYY"
+        />
 
         <label htmlFor="end">End Date</label>
-        <input onChange={experience} type="text" id="end" />
+        <input
+          onChange={experience}
+          type="text"
+          id="end"
+          placeholder="MM/YYYY"
+        />
 
         <label htmlFor="location">Location</label>
-        <input onChange={experience} type="text" id="location" />
+        <input
+          onChange={experience}
+          type="text"
+          id="location"
+          placeholder="e.g. Really Rapid City"
+        />
 
-        <label htmlFor="description">Location</label>
-        <textarea onChange={experience} id="description" rows={5} cols={10} />
+        <label htmlFor="description">Description</label>
+        <textarea
+          onChange={experience}
+          id="description"
+          rows={3}
+          placeholder="Tell us about your experience..."
+        />
 
-        <button onClick={() => setShow(!show)}> Remove </button>
-        <button type="submit">Submit Experience</button>
+        <div>
+          <button onClick={() => setShow(!show)}> Cancel </button>
+          <button type="submit">Submit</button>
+        </div>
       </form>
     </div>
   );
@@ -181,13 +211,19 @@ function ExperienceForm({ show, setShow, experience, submitExperience }) {
 function ExperienceEntry({ experience, handleEditClick, handleDeleteClick }) {
   return (
     <>
-      <div>{experience.company}</div>
-      <div>{experience.position}</div>
-      <div>{experience.start}</div>
-      <div>{experience.end}</div>
-      <div>{experience.location}</div>
-      <div>{experience.description}</div>
-      <div>
+      <div
+        style={{
+          color: "black",
+          margin: "10px",
+          fontSize: "20px",
+          fontWeight: "bolder",
+          textAlign: "center",
+        }}
+      >
+        {experience.company}
+      </div>
+
+      <div style={{ display: "flex", justifyContent: "center" }}>
         <button
           type="button"
           onClick={(event) => handleEditClick(event, experience)}
@@ -195,8 +231,6 @@ function ExperienceEntry({ experience, handleEditClick, handleDeleteClick }) {
           {" "}
           Edit{" "}
         </button>
-      </div>
-      <div>
         <button type="button" onClick={() => handleDeleteClick(experience.id)}>
           {" "}
           Delete{" "}
@@ -258,8 +292,7 @@ function EditEntry({ cancelEdit, editExperience, editFormChange }) {
       </div>
       <div>
         <button onClick={cancelEdit}>Cancel</button>
-      </div>
-      <div>
+
         <button type="submit">Save</button>
       </div>
     </>

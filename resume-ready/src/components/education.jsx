@@ -4,7 +4,6 @@ function Education({ educationHistory, setEducationHistory }) {
   const [showForm, setShowForm] = useState(false);
   const [id, setId] = useState(0);
   const [editId, setEditId] = useState(-1);
-  // const [educationHistory, setEducationHistory] = useState([]);
 
   const [education, setAddEducationData] = useState({
     school: "",
@@ -28,7 +27,6 @@ function Education({ educationHistory, setEducationHistory }) {
     const fieldName = event.target.getAttribute("id");
     const fieldValue = event.target.value;
 
-    //setAddEducationData([...addEducationData, addEducationData.fieldName = fieldValue]);
     const newEducationData = { ...education };
     newEducationData[fieldName] = fieldValue;
     setAddEducationData(newEducationData);
@@ -107,7 +105,7 @@ function Education({ educationHistory, setEducationHistory }) {
   return (
     <div>
       <h2>Education</h2>
-      <button onClick={() => setShowForm(true)}> Add Education </button>
+      <button onClick={() => setShowForm(!showForm)}> Add Education </button>
       {showForm && (
         <EducationForm
           show={showForm}
@@ -123,7 +121,6 @@ function Education({ educationHistory, setEducationHistory }) {
             {education.id === editId ? (
               <form onSubmit={handleEditFormSave}>
                 <EditEntry
-                  //key={education.id}
                   cancelEdit={handleCancelClick}
                   editEducation={editEducation}
                   editFormChange={handleEditFormChange}
@@ -131,7 +128,6 @@ function Education({ educationHistory, setEducationHistory }) {
               </form>
             ) : (
               <EducationEntry
-                //key={education.id}
                 education={education}
                 handleEditClick={handleEditClick}
                 handleDeleteClick={handleDeleteClick}
@@ -147,26 +143,52 @@ function Education({ educationHistory, setEducationHistory }) {
 function EducationForm({ show, setShow, education, submitEducation }) {
   return (
     <div>
-      <h2>Education</h2>
-
       <form onSubmit={submitEducation}>
         <label htmlFor="school">School</label>
-        <input onChange={education} type="text" id="school" />
+        <input
+          onChange={education}
+          type="text"
+          id="school"
+          required
+          placeholder="e.g. Rapid Resume University"
+        />
 
         <label htmlFor="location">Location</label>
-        <input onChange={education} type="text" id="location" />
+        <input
+          onChange={education}
+          type="text"
+          id="location"
+          placeholder="City, Country"
+        />
 
         <label htmlFor="degree">Degree</label>
-        <input onChange={education} type="text" id="degree" />
+        <input
+          onChange={education}
+          type="text"
+          id="degree"
+          placeholder="e.g. Bachelors in Sociology"
+        />
 
         <label htmlFor="start">Start Date</label>
-        <input onChange={education} type="text" id="start" />
+        <input
+          onChange={education}
+          type="text"
+          id="start"
+          placeholder="MM/YYYY"
+        />
 
         <label htmlFor="end">End Date</label>
-        <input onChange={education} type="text" id="end" />
+        <input
+          onChange={education}
+          type="text"
+          id="end"
+          placeholder="MM/YYYY"
+        />
 
-        <button onClick={(e) => setShow(!show)}> Remove </button>
-        <button type="submit">Submit Education</button>
+        <div>
+          <button onClick={(e) => setShow(!show)}> Cancel </button>
+          <button type="submit">Submit</button>
+        </div>
       </form>
     </div>
   );
@@ -175,12 +197,19 @@ function EducationForm({ show, setShow, education, submitEducation }) {
 function EducationEntry({ education, handleEditClick, handleDeleteClick }) {
   return (
     <>
-      <div>{education.school}</div>
-      <div>{education.location}</div>
-      <div>{education.degree}</div>
-      <div>{education.start}</div>
-      <div>{education.end}</div>
-      <div>
+      <div
+        style={{
+          color: "black",
+          margin: "10px",
+          fontSize: "20px",
+          fontWeight: "bolder",
+          textAlign: "center",
+        }}
+      >
+        {education.school}
+      </div>
+
+      <div style={{ display: "flex", justifyContent: "center" }}>
         <button
           type="button"
           onClick={(event) => handleEditClick(event, education)}
@@ -188,8 +217,7 @@ function EducationEntry({ education, handleEditClick, handleDeleteClick }) {
           {" "}
           Edit{" "}
         </button>
-      </div>
-      <div>
+
         <button type="button" onClick={() => handleDeleteClick(education.id)}>
           {" "}
           Delete{" "}
@@ -244,8 +272,7 @@ function EditEntry({ cancelEdit, editEducation, editFormChange }) {
       </div>
       <div>
         <button onClick={cancelEdit}>Cancel</button>
-      </div>
-      <div>
+
         <button type="submit">Save</button>
       </div>
     </>

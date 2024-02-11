@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 function PersonalDetails({ personalDetails, setPersonalDetails }) {
   const [showForm, setShowForm] = useState(false);
   const [editPersonalDetails, setEditPersonalDetails] = useState({
@@ -9,13 +8,6 @@ function PersonalDetails({ personalDetails, setPersonalDetails }) {
     address: "",
     aboutMe: "",
   });
-  /* const [personalDetails, setPersonalDetails] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    address: "",
-    aboutMe: "",
-  });*/
 
   const handlePersonalDetailsChange = (event) => {
     event.preventDefault();
@@ -61,17 +53,13 @@ function PersonalDetails({ personalDetails, setPersonalDetails }) {
           />
         </>
       )}
-
-      {!showForm && (
-        <DisplayPersonalDetails personalDetails={personalDetails} />
-      )}
     </div>
   );
 }
 
 function PersonalDetailsForm({ personalDetails, submit, handleChange }) {
   return (
-    <>
+    <div>
       <form onSubmit={submit}>
         <label htmlFor="fullName">Full Name</label>
         <input
@@ -79,20 +67,26 @@ function PersonalDetailsForm({ personalDetails, submit, handleChange }) {
           onChange={handleChange}
           id="fullName"
           type="text"
+          required
+          placeholder="e.g. John Smith"
         />
         <label htmlFor="email">Email</label>
         <input
           value={personalDetails.email}
           onChange={handleChange}
-          type="text"
+          type="email"
           id="email"
+          required
+          placeholder="e.g. Johnsmith123@email.com"
         />
         <label htmlFor="phone">Phone Number</label>
         <input
           value={personalDetails.phone}
           onChange={handleChange}
-          type="text"
+          type="tel"
           id="phone"
+          placeholder="XXX-XXX-XXXX"
+          required
         />
         <label htmlFor="address">Address</label>
         <input
@@ -100,32 +94,22 @@ function PersonalDetailsForm({ personalDetails, submit, handleChange }) {
           onChange={handleChange}
           type="text"
           id="address"
+          placeholder="e.g. 45 Maplewood Avenue"
+          required
         />
         <label htmlFor="aboutMe">About Me</label>
-        <input
+        <textarea
           value={personalDetails.aboutMe}
           onChange={handleChange}
-          type="text"
           id="aboutMe"
+          rows={3}
+          placeholder="Tell Us About Yourself..."
         />
 
         <button type="submit">Save</button>
       </form>
-    </>
-  );
-}
-
-function DisplayPersonalDetails({ personalDetails }) {
-  return (
-    <div>
-      <div>{personalDetails.fullName}</div>
-      <div>{personalDetails.email}</div>
-      <div>{personalDetails.phone}</div>
-      <div>{personalDetails.address}</div>
-      <div>{personalDetails.aboutMe}</div>
     </div>
   );
 }
 
 export default PersonalDetails;
-export { DisplayPersonalDetails };

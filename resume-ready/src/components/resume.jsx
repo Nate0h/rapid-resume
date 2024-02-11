@@ -31,7 +31,9 @@ function Resume({
         </div>
       </div>
       <h2 className="sectionHeader">About Me</h2>
-      <p className="aboutMeText">{personalDetails.aboutMe}</p>
+      <div className="aboutMeContainer">
+        <p className="aboutMeText">{personalDetails.aboutMe}</p>
+      </div>
       <h2 className="sectionHeader">Education</h2>
       {educationHistory.map((education) => {
         return (
